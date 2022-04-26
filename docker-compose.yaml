@@ -1,0 +1,18 @@
+version: '2'
+services:
+  wavelog:
+    image: wavelog
+    build:
+      context: .
+    volumes:
+      - .:/home/node/app
+    ports:
+      - '4000:4000'
+  wavelog-db:
+    image: 'postgres'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=example
+      - POSTGRES_DB=wavelog
+    ports:
+      - '5432:5432'
