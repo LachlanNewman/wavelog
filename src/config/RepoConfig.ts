@@ -1,3 +1,5 @@
+import { genAlphaNumeric, genNumber } from "../utils/Gen"
+
 export interface RepoConfig{
     database: string,
     port: number,
@@ -12,4 +14,12 @@ export const getRepoConfig = (env: NodeJS.ProcessEnv):RepoConfig => ({
     host: env.DB_HOST ?? 'localhost',
     user: env.DB_USER ?? 'postgres',
     password: env.DB_PASSWORD ?? 'example',
+})
+
+export const genRepoConfig = ():RepoConfig => ({
+    database: genAlphaNumeric(),
+    port: genNumber(0,65536),
+    host: genAlphaNumeric(),
+    user: genAlphaNumeric(),
+    password: genAlphaNumeric(),
 })

@@ -7,10 +7,11 @@ exports.up = async function(knex) {
     CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
       
     CREATE TABLE waves (
-    "id"                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    "name"              TEXT UNIQUE NOT NULL,
+    "uid"                UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    "id"                TEXT UNIQUE NOT NULL,
+    "name"              TEXT NOT NULL,
     "longitude"         FLOAT NOT NULL,
-    "lattitude"        FLOAT NOT NULL
+    "lattitude"         FLOAT NOT NULL
     );
   `);
 };

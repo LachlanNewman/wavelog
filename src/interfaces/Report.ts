@@ -22,7 +22,7 @@ export enum Direction{
 }
 
 export interface Report{
-    name: string
+    id: string
     swellSize: number;
     swellDirection: Direction;
     tide: number;
@@ -32,7 +32,7 @@ export interface Report{
 }
 
 export const genReport = ():Report => ({
-    name: genAlphaNumeric(),
+    id: genAlphaNumeric(),
     swellSize: genNumber(),
     swellDirection: genSample(Object.values(Direction)),
     tide: genNumber(),
@@ -42,7 +42,7 @@ export const genReport = ():Report => ({
 })
 
 export const ReportSchema = Joi.object({
-    name: Joi.string().required(),
+    id: Joi.string().required(),
     swellSize: Joi.number().required(),
     swellDirection: Joi.string().required(),
     tide: Joi.number().required(),

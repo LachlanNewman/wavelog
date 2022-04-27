@@ -4,7 +4,7 @@ import { WaveService } from "./services/WaveService";
 import dotenv from "dotenv"
 import {getRepoConfig } from "./config/RepoConfig";
 import { Repo } from "./repos/Repo";
-import { convertToObject } from "typescript";
+import cors from "cors";
 
 dotenv.config()
 
@@ -17,6 +17,7 @@ const waveController = WaveController(waveService)
 
 const app = express();
 app.use(express.json());
+app.use(cors({origin: "*"}))
 
 app.use('/waves',waveController)
 
