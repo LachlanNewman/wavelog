@@ -8,4 +8,5 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   collectCoverageFrom: ['<rootDir>/src/**', '!<rootDir>/src/index.ts'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules'],
+  setupFiles: [ 'dotenv/config' ]
 };
