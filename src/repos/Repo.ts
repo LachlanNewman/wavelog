@@ -1,9 +1,11 @@
 import knex, { Knex } from "knex";
 import { RepoConfig } from "../config/RepoConfig";
+import { ReportRepo } from "./ReportRepo";
 import { WaveRepo } from "./WaveRepo";
 
 export class Repo{
     public waves: WaveRepo;
+    public reports: ReportRepo;
 
     private readonly pg: Knex;
 
@@ -21,9 +23,15 @@ export class Repo{
           });
     
           this.waves = new WaveRepo(this);
+          this.reports = new ReportRepo(this);
+
         } catch (err) {
           throw new Error(err.message);
         }
+      }
+
+      private connect(config: RepoConfig){
+        
       }
 
       private async runTransactionWithRollback<A>(func: (trx: Knex.Transaction) => Promise<A>): Promise<A>{

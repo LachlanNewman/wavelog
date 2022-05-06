@@ -1,8 +1,8 @@
-import { genRepoConfig, getRepoConfig } from "../config/RepoConfig"
+import { genRepoConfig } from "../config/RepoConfig"
 import { Repo } from "../repos/Repo"
 import { WaveService } from "../services/WaveService"
 import { WaveController } from "./WaveController"
-import {times} from "lodash"
+import {times,omit} from "lodash"
 import { genWave } from "../interfaces/Wave"
 import { genNumber } from "../utils/Gen"
 import express from "express"
@@ -38,7 +38,7 @@ describe('WaveController Tests',() => {
             const repo = new Repo(config)
             const service = new WaveService(repo)
             const controller = WaveController(service)
-            const wave = genWave()
+            const wave = omit(genWave(),'id')
     
             service.createWave = jest.fn().mockImplementation(() => wave)
     

@@ -1,11 +1,11 @@
-import { genWave, Wave } from "../interfaces/Wave";
+import { Wave } from "../interfaces/Wave";
 import { Repo } from "../repos/Repo";
 
 export class WaveService {
 
     constructor(public readonly repo: Repo){}
 
-    async getWave(id: string):Promise<Wave | undefined>{
+    async getWave(id: string):Promise<Wave>{
         return this.repo.waves.getWave(id)
     }
 
@@ -13,7 +13,7 @@ export class WaveService {
         return this.repo.waves.getWaves()
     }
 
-    createWave(wave:Wave){
-        this.repo.waves.createWave(wave)
+    async createWave(wave:Wave){
+        return await this.repo.waves.createWave(wave)
     }
 }

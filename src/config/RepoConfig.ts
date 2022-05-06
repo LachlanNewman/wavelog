@@ -18,7 +18,7 @@ export const getRepoConfig = (env: NodeJS.ProcessEnv):RepoConfig => ({
 
 export const genRepoConfig = ():RepoConfig => ({
     database: genAlphaNumeric(),
-    port: genNumber(0,65536),
+    port: 5432,
     host: genAlphaNumeric(),
     user: genAlphaNumeric(),
     password: genAlphaNumeric(),

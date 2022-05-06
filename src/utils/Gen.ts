@@ -10,11 +10,3 @@ export const genLattitude = (): string => faker.address.longitude()
 export const genAlphaNumeric = (length = 32): string => faker.random.alphaNumeric(length);
 
 export const genSample = <A>(items: A[]): A => items[Math.floor(Math.random() * items.length)];
-
-export const geRepoConfig = ():RepoConfig => ({
-    database: genAlphaNumeric(),
-    port: genNumber(),
-    host: genAlphaNumeric(),
-    user: genAlphaNumeric(),
-    password: genAlphaNumeric(),
-})
