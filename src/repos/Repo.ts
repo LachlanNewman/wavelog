@@ -14,15 +14,10 @@ export class Repo{
         this.config = config
         try {
           this.pg = knex({
-            client: 'pg',
-            connection: {
-              database: config.database,
-              port: config.port,
-              host: config.host,
-              user: config.user,
-              password: config.password,
-            }
-          });
+            client: 'postgresql',
+            connection: process.env.DATABASE_URL,
+          }
+          );
     
           this.waves = new WaveRepo(this);
           this.reports = new ReportRepo(this);
