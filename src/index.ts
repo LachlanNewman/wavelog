@@ -29,4 +29,4 @@ app.use('/reports',reportController)
 
 app.use(errorMiddleWare)
 
-app.listen(4000,()=>console.log("listening"))
+app.listen(process.env.PORT,()=>console.log("listening"))
