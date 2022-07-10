@@ -2,6 +2,7 @@ import knex, { Knex } from "knex";
 import { RepoConfig } from "../config/RepoConfig";
 import { ReportRepo } from "./ReportRepo";
 import { WaveRepo } from "./WaveRepo";
+import { ClientConfig } from 'pg'
 
 export class Repo{
     public waves: WaveRepo;
@@ -15,9 +16,13 @@ export class Repo{
         try {
           this.pg = knex({
             client: 'postgresql',
-            connection: process.env.DATABASE_URL,
-          }
-          );
+            connection: {
+              connectionString: process.env.DATABASE_URL,
+              ssl: {
+                rejectUnauthorized: false
+              }
+            }
+          });
     
           this.waves = new WaveRepo(this);
           this.reports = new ReportRepo(this);
